@@ -1,0 +1,143 @@
+{% extends 'Admin/alert/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Admin_/Alerts_/css/viewalerts.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Alerts - Disconnect</h3>
+
+    <div class="slidecontainer">
+        <p>Alerts count adjust</p>
+        <input type="range" oninput="adjustCount()" min="1" max="{{ counts }}" value="3" id="rangeslider">
+    </div>
+
+    <div class="ListFormDiv" id="contentDiv">
+        {% for each in alertsData %}
+        <div class="box" id="{{ each.id }}">
+            <p>Device :{{ each.mac_id }}</p>
+            <p>Type :{{ each.alert_type }}</p>
+            <p>Date :{{ each.alert_date }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        function adjustCount() {
+            let crntvalue = document.getElementById('rangeslider').value;
+            let parentDiv = document.getElementById('contentDiv');
+            let childrenDiv = parentDiv.childNodes;
+            //console.log(childrenDiv);
+            let countStart = 1;
+            var countData = JSON.parse("{{countsData}}");
+            //console.log(countData);
+            for (let i in childrenDiv) {
+                if (childrenDiv[i].className == "box") {
+                    //console.log(childrenDiv[i].id);
+                    if (countStart <= crntvalue) {
+                        document.getElementById(childrenDiv[i].id).style.display = "block";
+                    } else {
+                        document.getElementById(childrenDiv[i].id).style.display = "none";
+                    }
+                    countStart++;
+                }
+            }
+
+        }
+
+    </script>
+    <br><br><br>
+
+    <h3>Alerts - Temperature</h3>
+
+    <div class="slidecontainer">
+        <p>Alerts count adjust</p>
+        <input type="range" oninput="adjustCount2()" min="1" max="{{ tmpcounts }}" value="3" id="rangeslider2">
+    </div>
+
+    <div class="ListFormDiv" id="contentDiv2">
+        {% for each in tmpalertsData %}
+        <div class="box" id="A2A{{ each.id }}">
+            <p>Device :{{ each.mac_id }}</p>
+            {% if each.alert_status == 1 %}
+            <p>Type : Email</p>
+            {% elif each.alert_status == 2 %}
+            <p>Type : Sms</p>
+            {% elif each.alert_status == 3 %}
+            <p>Type : Phone</p>
+            {% else %}
+            <p>Type : -none-</p>
+            {% endif %}
+            <p>Date :{{ each.alert_date }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        function adjustCount2() {
+            let crntvalue = document.getElementById('rangeslider2').value;
+            let parentDiv = document.getElementById('contentDiv2');
+            let childrenDiv = parentDiv.childNodes;
+            //console.log(childrenDiv);
+            let countStart = 1;
+            var countData = JSON.parse("{{tmpcountsData}}");
+            //console.log(countData);
+            for (let i in childrenDiv) {
+                if (childrenDiv[i].className == "box") {
+                    //console.log(childrenDiv[i].id);
+                    if (countStart <= crntvalue) {
+                        document.getElementById(childrenDiv[i].id).style.display = "block";
+                    } else {
+                        document.getElementById(childrenDiv[i].id).style.display = "none";
+                    }
+                    countStart++;
+                }
+            }
+
+        }
+
+    </script>
+    <br><br><br>
+</div>
+{% endblock %}
+
+<!---------------------------RIGHT--------------------------->
+{% block sidebar %}
+<div class="sidebar">
+    <!---->
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Temperature</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{count.0}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Disconnect</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{count.1}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Total</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{count.2}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+</div>
+{% endblock %}

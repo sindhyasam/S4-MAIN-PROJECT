@@ -1,0 +1,95 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="{% static 'Admin_/library/css/profile.css' %}" type="text/css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--Profile row section 1-->
+        <div class="profile-img-flex">
+            <div class="col-profile-img-flex">
+                <img id="profileImageFirst" src="{{ image }}">
+                <input id="imageUploadFirst" type="file" name="" placeholder="Photo" required="" capture>
+            </div>
+            <!-- HIDE -->
+            <div class="updateImage" id="updateImagePopUp">
+                <form action="" method="POST" enctype="multipart/form-data"
+                    class="col-profile-img-flex updateImageInner">
+                    {% csrf_token %}
+                    <img id="profileImage" src="{{ image }}">
+                    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required>
+                    <div class="editSectionsDiv">
+                        <input type="submit" value="save" name="adminDpUpdate" id="PopUpSave">
+                        <input type="reset" value="cancel" id="PopUpCancel">
+                    </div>
+                </form>
+            </div>
+            <!-- HIDE -->
+            <div class="col-profile-img-flex">
+                <h2 class="name-head">Jobin J</h2>
+                <h3 class="username-head">techworldthink</h3>
+                <h3 class="email-head">jobinjofficial@gmail.com</h3>
+            </div>
+            <div class="col-profile-img-flex" id="profileAbout">
+                <p id="about_para">{{ about }}</p>
+            </div>
+            <!-- HIDE -->
+            <div class="updateDesc" id="updateDescPopUp">
+                <form action="" method="POST" enctype="multipart/form-data"
+                    class="col-profile-img-flex updateImageInner">
+                    {% csrf_token %}
+                    <input type="text" id="aboutInput" name="aboutAdmin" value="{{ about }}">
+                    <div class="editSectionsDiv">
+                        <input type="submit" value="save" name="updateDescAdmin" id="PopUpDescSave">
+                        <input type="reset" value="cancel" id="PopUpDescCancel">
+                    </div>
+                </form>
+            </div>
+            <!-- HIDE -->
+        </div>
+
+        <!--Profile row section 2 Edit-->
+        <section id="Register">
+            <div class="container-reg">
+                <form class="box" action="profile_update" method="POST">
+                    {% csrf_token %}
+                    <h3>Update</h3>
+
+                    <input style="margin-top: 2em;" type="text" name="register-fname" placeholder="First name"
+                        value="{{ context.first_name }}">
+                    <input type="text" name="register-lname" placeholder="Last name" value="{{ context.last_name }}">
+                    <input type="email" name="register-email" placeholder="Email id" value="{{ context.email }}">
+                    <input type="text" name="register-username" placeholder="username" value="{{ context.username }}"
+                        readonly>
+                    <input type="password" name="register-password_1" id="pass-field_r1" placeholder="password">
+                    <input type="password" name="register-password_2" id="pass-field_r2" placeholder="retype password">
+                    <div>
+                        <input type="checkbox" onclick="showPasswordRegister()"><label class="show-pass">Show
+                            Password</label>
+                    </div>
+                    <input type="submit" value="Update" name="login-login">
+
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!--FOR ALERTS-->
+    {% for message in messages %}
+    <script>alert("{{ message }}");</script>
+    {% endfor %}
+    <!---->
+
+    <script src="{% static 'Admin_/library/js/profile.js' %}"></script>
+</body>
+
+</html>

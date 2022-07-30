@@ -1,0 +1,153 @@
+h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 9px;
+  border-radius: 7px;
+  font-size: 16px;
+}
+.ListFormDiv {
+  width: 100%;
+}
+.ListFormTable {
+  width: 100%;
+}
+.ListFormTable thead tr th {
+  background-color: #003147;
+  color: white;
+  padding: 9px;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+.ListFormTable tbody tr td {
+  padding: 5px;
+  font-family: monospace;
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+}
+.red {
+  color: red;
+}
+.delete-btn {
+  background: none;
+  border: none;
+  outline: none;
+}
+form {
+  padding: 0;
+  margin: 0;
+}
+.active_td {
+  color: green;
+}
+
+.nonactive_td {
+  color: red;
+}
+
+/*************   Table Row limit **********/
+div.pager {
+  text-align: center;
+  margin: 1em 0;
+}
+
+div.pager span {
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #9da0a18a;
+  border-radius: 5px;
+  margin-right: 0.5em;
+}
+
+div.pager span.active {
+  background: #020202;
+  color: #f1efef;
+  border: none;
+}
+
+/************* Report ******************/
+
+#ReportPopUp {
+  display: none;
+}
+#about_para {
+  cursor: pointer;
+}
+
+.formInner {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  width: 80%;
+  background-color: white;
+  text-align: center;
+}
+
+.reportdiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0 0 0 / 62%) !important;
+}
+#reportInput {
+  margin-top: 1em;
+  height: 10em;
+  width: 80%;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+}
+.editSectionsDiv {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+}
+.editSectionsDiv input {
+  width: 60px;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border: none;
+  outline: none;
+  margin: 1em;
+}
+.editSectionsDiv input[type='submit'] {
+  background-color: green;
+}
+.editSectionsDiv input[type='reset'] {
+  background-color: red;
+}
+
+.reportHead {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1em;
+  padding-left: 10%;
+  font-family: monospace;
+}
+
+.reportHead div {
+  flex: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.reportHead div input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+#report {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+

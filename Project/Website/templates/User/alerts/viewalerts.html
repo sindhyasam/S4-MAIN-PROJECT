@@ -1,0 +1,45 @@
+{% extends 'User/alerts/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Staff_/Alerts/css/alertstatus.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'Staff_/Alerts/js/alertstatus.js' %}"></script>
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Alerts</h3>
+    <div class="ListFormDiv">
+        <table class="ListFormTable disTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>gas value</th>
+                    <th>alert date</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for each in data %}
+                <tr>
+                    <td>{{ each.id }}</td>
+                    <td>{{ each.mac_id }}</td>
+                   
+                    <td>{{ each.gas_value }}</td>
+                   
+                    <td>{{ each.crnt_time }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+    {% endblock %}

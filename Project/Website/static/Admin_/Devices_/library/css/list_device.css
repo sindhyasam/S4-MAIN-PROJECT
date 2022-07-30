@@ -1,0 +1,62 @@
+h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 9px;
+  border-radius: 7px;
+  font-size: 16px;
+}
+.ListFormDiv {
+  width: 100%;
+}
+.ListFormTable {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ListFormTable thead tr th {
+  background-color: #003147;
+  color: white;
+  padding: 9px;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+.ListFormTable tbody tr td {
+  padding: 5px;
+  font-family: monospace;
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+}
+.red {
+  color: red;
+}
+.delete-btn {
+  background: none;
+  border: none;
+  outline: none;
+}
+form {
+  padding: 0;
+  margin: 0;
+}
+ /*************   Table Row limit **********/
+ div.pager {
+  text-align: center;
+  margin: 1em 0;
+}
+
+div.pager span {
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #9da0a18a;
+  border-radius: 5px;
+  margin-right: 0.5em;
+}
+
+div.pager span.active {
+  background: #020202;
+  color: #f1efef;
+  border: none;
+}

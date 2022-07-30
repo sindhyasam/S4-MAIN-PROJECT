@@ -1,0 +1,57 @@
+h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 9px;
+  border-radius: 7px;
+  font-size: 16px;
+}
+.ListFormDiv {
+  width: 100%;
+}
+.yearDiv {
+  width: 100%;
+}
+.yearHead {
+  font-family: sans-serif;
+  box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 19%);
+  padding: 5px;
+  font-size: 20px;
+}
+.monthDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.eachMonth {
+  font-family: sans-serif;
+  padding: 5px;
+  font-size: 14px;
+}
+.reportbox {
+  width: 100px;
+  text-align: center;
+}
+.reportbox > img {
+  width: 100px;
+  height: 100px;
+}
+.reportbox > p {
+  font-size: 13px;
+}
+.content {
+  margin: 2em;
+}
+.reportbox > button {
+  border: none;
+  background: #048bff;
+  color: white;
+  /* padding-left: 5px; */
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px;
+  font-family: monospace;
+}
+.reportbox > button > a {
+  text-decoration: none;
+  color: white;
+}

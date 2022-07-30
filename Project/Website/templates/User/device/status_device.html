@@ -1,0 +1,47 @@
+{% extends 'User/device/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Staff_/Devices/css/status_device.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Devices</h3>
+    <div class="ListFormDiv">
+        <table class="ListFormTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for each in deviceData %}
+                <tr>
+                    <td>{{ each.id }}</td>
+                    <td>{{ each.mac_id }}</td>
+                    {% if each.status == "ON" %}
+                    <td class="active_td">
+                        Active
+
+                        {% else %}
+                    <td class="nonactive_td">
+                        Not Active
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript" src="{% static 'Staff_/Devices/js/device.js' %}"></script>
+    <br><br><br>
+</div>
+{% endblock %}

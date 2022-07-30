@@ -1,0 +1,69 @@
+{% extends 'Admin/users/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Admin_/Users_/library/css/add_users.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Add New User</h3>
+    <div class="addFormDiv">
+        <form class="addForm" action="registration_from_admin" method="POST">
+            {% csrf_token %}
+            <input style="margin-top: 2em;" type="text" name="register-fname" placeholder="First name">
+                <input type="text" name="register-lname" placeholder="Last name">
+                <input type="email" name="register-email" placeholder="Email id">
+                <input type="text" name="register-username" placeholder="username">
+                <input type="password" name="register-password_1" id="pass-field_r1" placeholder="password">
+                <input type="password" name="register-password_2" id="pass-field_r2" placeholder="retype password">
+                <input type="submit" value="Register" name="login-login">
+        </form>
+    </div>
+
+
+    <br><br><br>
+</div>
+{% endblock %}
+
+<!---------------------------RIGHT--------------------------->
+{% block sidebar %}
+<div class="sidebar">
+    <!---->
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Active</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.0}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Deactive</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.1}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Total</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.2}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+</div>
+{% endblock %}
+
+

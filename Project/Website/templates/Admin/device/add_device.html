@@ -1,0 +1,34 @@
+{% extends 'Admin/device/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Admin_/Devices_/library/css/add_device.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Add Device (Manual Setup)</h3>
+    <div class="addFormDiv">
+        <form class="addForm" action="add_device_manually" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="MAC ID" name="mac_id_m">
+            <select name="user_m">
+                <option>Select User</option>
+                {% for each in allusers %}
+                <option>{{ each }}</option>
+                {% endfor %}
+            </select>
+            <select name="status_m">
+                <option>Select Status</option>
+                <option>ON</option>
+                <option>OFF</option>
+            </select>
+            <input type="submit" name="addDeviceManually" value="ADD">
+        </form>
+    </div>
+   
+</div>
+{% endblock %}
+

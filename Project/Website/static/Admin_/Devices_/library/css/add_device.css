@@ -1,0 +1,40 @@
+h3{
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 9px;
+    border-radius: 7px;
+    font-size: 16px;
+}
+.addForm{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input,select{
+    margin-top: 1em;
+    padding: 10px;
+    border-radius: 7px;
+    outline:none;
+    border: 1px solid rgb(215 215 215);
+}
+input:focus{
+    outline: none;
+    border: 1px solid rgb(219, 68, 68);
+}
+select:focus{
+    outline: none;
+    border: 1px solid rgb(219, 68, 68);
+}
+input[type="submit"]{
+    background-color: black;
+    width: 100px;
+    text-align: center;
+    align-self: center;
+    color: white;
+    border: none;
+    margin-top: 2em;
+}

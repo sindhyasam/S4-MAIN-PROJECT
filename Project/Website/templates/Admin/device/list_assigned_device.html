@@ -1,0 +1,88 @@
+{% extends 'Admin/device/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Admin_/Devices_/library/css/list_device.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+<script type="text/javascript" src="{% static 'Admin_/Devices_/library/js/row_limit.js' %}"></script>
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Assigned Devices</h3>
+    <div class="ListFormDiv">
+        <table class="ListFormTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>UserName</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for each in deviceData %}
+                {% if each.assigned_to != "" %}
+                <tr>
+                    <td>{{ each.id }}</td>
+                    <td>{{ each.mac_id }}</td>
+                    <td>{{ each.assigned_to }}</td>
+                    <td>
+                        <form action='delete_assign' method='POST'>
+                            {% csrf_token %}
+                            <button name="id" value="{{ each.id }}" class="delete-btn" type="submit"><i
+                                    class="fa fa-trash-o red" aria-hidden="true"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+</div>
+{% endblock %}
+
+<!---------------------------RIGHT--------------------------->
+{% block sidebar %}
+<div class="sidebar">
+    <!---->
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Active</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.0}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Deactive</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.1}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Total</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.2}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+</div>
+{% endblock %}

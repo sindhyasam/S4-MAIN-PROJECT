@@ -1,0 +1,122 @@
+{% extends 'Admin/alert/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Admin_/Alerts_/css/add_alerts.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<!--  JQuery -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'Admin_/Alerts_/js/add_alerts.js' %}"></script>
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Edit Alerts</h3>
+    <div class="ListFormDiv">
+        <table class="ListFormTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>user</th>
+                    <th>Device</th>
+                    <th>Email</th>
+                    <th>Sms</th>
+                    <th>Phone</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for each in alertData %}
+                <tr>
+                    <form action='update_alerts' method='POST'>
+                        {% csrf_token %}
+                        <td><input type="text" value="{{ each.id }}" name="id"></td>
+                        <td><input type="text" value="{{ each.user_id }}" name="user_id"></td>
+                        <td><input type="text" value="{{ each.mac_id }}" name="mac_id"></td>
+                        <td>
+                            <select name="email_alert">
+                                {% if each.email_alert %}
+                                <option>YES</option>
+                                <option>NO</option>
+                                {% else %}
+                                <option>NO</option>
+                                <option>YES</option>
+                                {% endif %}
+                            </select>
+                        </td>
+                        <td>
+                            <select name="sms_alert">
+                                {% if each.sms_alert %}
+                                <option>YES</option>
+                                <option>NO</option>
+                                {% else %}
+                                <option>NO</option>
+                                <option>YES</option>
+                                {% endif %}
+                            </select>
+                        </td>
+                        <td>
+                            <select name="phone_alert">
+                                {% if each.phone_alert %}
+                                <option>YES</option>
+                                <option>NO</option>
+                                {% else %}
+                                <option>NO</option>
+                                <option>YES</option>
+                                {% endif %}
+                            </select>
+                        </td>
+                        <td>
+                            <button class="update-btn" type="submit">Update</button>
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+</div>
+{% endblock %}
+
+<!---------------------------RIGHT--------------------------->
+{% block sidebar %}
+<div class="sidebar">
+    <!---->
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Email</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{countList.0}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">SMS</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{countList.1}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Phone</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{countList.2}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+</div>
+{% endblock %}

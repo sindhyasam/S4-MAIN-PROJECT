@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devices</title>
+    <link href="{% static 'Admin_/Devices_/library/css/theme.css' %}" type="text/css" rel="stylesheet">
+    <!--Right Sidebar-->
+    <link href="{% static 'Admin_/library/css/right_sidebar.css' %}" type="text/css" rel="stylesheet">
+    <!--FONT AWESOME ICONS https://fontawesome.com/v4.7/icon/home-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  JQuery -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    {% block styles %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="right">
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!--FOR ALERTS-->
+    {% for message in messages %}
+    <script>alert("{{ message }}");</script>
+    {% endfor %}
+    <!---->
+
+</body>
+
+</html>

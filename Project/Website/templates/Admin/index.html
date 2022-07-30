@@ -1,0 +1,109 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!--FONT AWESOME ICONS https://fontawesome.com/v4.7/icon/home-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'Admin_/library/css/style.css' %}" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation" id="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-shield" aria-hidden="true"></i></span>
+                        <span class="title">
+                            <h2>GLM</h2>
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dashboard" target="contents_frame">
+                        <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="devices" target="contents_frame">
+                        <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                        <span class="title">Add Device</span>
+                    </a>
+                </li>
+
+                <li><a href="assigndevices" target="contents_frame"><span class="icon"><i class="fa fa-plus-circle"
+                                aria-hidden="true"></i></span>
+                        <span class="title">Assign Device</span>
+                    </a>
+                </li>
+                <li><a href="assignDevicesList" target="contents_frame"><span class="icon"><i class="fa fa-minus-circle"
+                                aria-hidden="true"></i></span>
+                        <span class="title">Remove Assign</span>
+                    </a>
+                </li>
+                <li><a href="listDevices" target="contents_frame"><span class="icon"><i class="fa fa-list"
+                                aria-hidden="true"></i></span>
+                        <span class="title">List Device</span>
+                    </a>
+                </li>
+                <li><a href="removeDevices" target="contents_frame"><span class="icon"><i class="fa fa-minus-circle"
+                                aria-hidden="true"></i></span>
+                        <span class="title">Remove Device</span>
+                    </a>
+                </li>
+
+
+                <li><a href="list_user" target="contents_frame"><span class="icon"><i class="fa fa-list"
+                                aria-hidden="true"></i></span>
+                        <span class="title">List user</span>
+                    </a>
+                </li>
+                <li><a href="remove_user" target="contents_frame"><span class="icon"><i class="fa fa-minus-circle"
+                                aria-hidden="true"></i></span>
+                        <span class="title">Remove user</span>
+                    </a>
+                </li>
+                <li><a href="status_user" target="contents_frame"><span class="icon"><i class="fa fa-circle-o-notch"
+                                aria-hidden="true"></i></span>
+                        <span class="title">Status</span>
+                    </a>
+                </li>
+
+
+
+
+
+                <li>
+                    <a href="logout">
+                        <span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                        <span class="title"> Sign-out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main">
+
+
+            <div class="contents" id="contents" name="contents">
+                <iframe class="contents_frame" name="contents_frame" src="dashboard" title=""></iframe>
+                <br><br>
+            </div>
+            <br><br>
+
+        </div>
+
+    </div>
+
+    <script src="{% static 'Admin_/library/js/home.js' %}"></script>
+</body>
+
+</html>

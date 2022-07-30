@@ -1,0 +1,57 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main_div {
+            display: block;
+        }
+
+        .first_block {
+            display: flex;
+            flex-direction: row;
+            margin: 1em;
+        }
+
+        .first_inner_block {
+            flex: 3.3;
+            box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+            margin: 10px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            
+        }
+        .first_inner_block > h2{
+            font-size: 30px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_div">
+        <div class="first_block">
+            <div class="first_inner_block">
+                Users
+                <h2>{{ userCount }}</h2>
+            </div>
+            <div class="first_inner_block">
+                Devices
+                <h2>{{ deviceCount }}</h2>
+            </div>
+            <div class="first_inner_block">
+                Alerts
+                <h2>{{ deviceCount }}</h2>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

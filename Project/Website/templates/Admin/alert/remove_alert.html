@@ -1,0 +1,120 @@
+{% extends 'Admin/alert/theme.html' %}
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'Admin_/Alerts_/css/remove_alerts.css' %}" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'Admin_/Alerts_/js/alerts_delete.js' %}"></script>
+{% endblock %}
+
+<!---------------------------LEFT--------------------------->
+{% block content %}
+<div class="content">
+    <h3>Remove Alerts (TEMP)</h3>
+    <div class="ListFormDiv">
+        <table class="ListFormTable disTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>Temp</th>
+                    <th>Reg.date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for each in tmpalertsData %}
+                <tr>
+                    <td>{{ each.id }}</td>
+                    <td>{{ each.mac_id }}</td>
+                    <td>{{ each.temp_now }}</td>
+                    <td>{{ each.reg_date }}</td>
+                    <td>
+                        <form action='delete_alert' method='POST'>
+                            {% csrf_token %}
+                            <button name="id" value="{{ each.id }}" class="delete-btn" type="submit"><i
+                                    class="fa fa-trash-o red" aria-hidden="true"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+</div>
+{% endblock %}
+
+<!---------------------------RIGHT--------------------------->
+{% block sidebar %}
+<div class="sidebar">
+    <!---->
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Active(T)</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.0}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Deactive(T)</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.1}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Total(T)</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.2}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Active(D)</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.3}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Deactive(D)</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.4}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-box">
+        <h4 class="sidebar-head">Total(D)</h4>
+        <div class="progress-circle p10 center-align-right-inner" id="pg1">
+            <span>{{counts.5}}</span>
+            <div class="left-half-clipper">
+                <div class="first50-bar"></div>
+                <div class="value-bar"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <br><br>
+</div>
+{% endblock %}
